@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<MSRTOSSetting>
+<BaseSetting Profile="standard" ProjectType="MSRTOSAppProject" RealEvoVer="0.9.7"/>
+<OutputSetting>
+<OutputPath Name="Output" Path="Release:Debug" TreeNode="Output"/>
+<OutputPath Name="Debug" Path="Debug" TreeNode="Debug"/>
+<OutputPath Name="Release" Path="Release" TreeNode="Release"/>
+</OutputSetting>
+<BuildSetting CoustomCfgMakefile="false" NotScanSourceFile="false"/>
+</MSRTOSSetting>

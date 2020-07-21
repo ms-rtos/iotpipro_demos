@@ -1,0 +1,733 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Components": [
+          {
+            "RelativeFilename": "main_screen\\background.png",
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Pressed": "main_screen\\bg_tab_page.png",
+                "Released": "main_screen\\bg_tab_page.png",
+                "Alpha": 255,
+                "IconPressed": "main_screen\\icon_temperature.png",
+                "IconReleased": "main_screen\\icon_temperature.png",
+                "IconX": 36,
+                "IconY": 61,
+                "IconHeight": 32,
+                "IconWidth": 32,
+                "Name": "buttonWithIconTemp",
+                "X": 0,
+                "Y": 0,
+                "Width": 105,
+                "Height": 155,
+                "Type": "ButtonWithIcon",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId1",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textAreaTempLabel",
+                "X": 38,
+                "Y": 5,
+                "Width": 28,
+                "Height": 16,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId2",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId3",
+                  "UseBuffer": true,
+                  "BufferSize": 5
+                },
+                "Name": "textAreaTempValue",
+                "X": 34,
+                "Y": 115,
+                "Width": 36,
+                "Height": 20,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "containerTemperature",
+            "X": 12,
+            "Y": 55,
+            "Width": 105,
+            "Height": 155,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Pressed": "main_screen\\bg_tab_page.png",
+                "Released": "main_screen\\bg_tab_page.png",
+                "Alpha": 255,
+                "IconPressed": "main_screen\\icon_humidity.png",
+                "IconReleased": "main_screen\\icon_humidity.png",
+                "IconX": 36,
+                "IconY": 61,
+                "IconHeight": 32,
+                "IconWidth": 32,
+                "Name": "buttonWithIconHum",
+                "X": 0,
+                "Y": 0,
+                "Width": 105,
+                "Height": 155,
+                "Type": "ButtonWithIcon",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId4",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textAreaHumLabel",
+                "X": 38,
+                "Y": 5,
+                "Width": 28,
+                "Height": 16,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId5",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId10",
+                  "UseBuffer": true,
+                  "BufferSize": 5
+                },
+                "Name": "textAreaHumValue",
+                "X": 33,
+                "Y": 115,
+                "Width": 38,
+                "Height": 20,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "containerHumidity",
+            "X": 129,
+            "Y": 55,
+            "Width": 105,
+            "Height": 155,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Pressed": "main_screen\\bg_tab_page.png",
+                "Released": "main_screen\\bg_tab_page.png",
+                "Alpha": 255,
+                "IconPressed": "main_screen\\icon_light.png",
+                "IconReleased": "main_screen\\icon_light.png",
+                "IconX": 36,
+                "IconY": 61,
+                "IconHeight": 32,
+                "IconWidth": 32,
+                "Name": "buttonWithIconLight",
+                "X": 0,
+                "Y": 0,
+                "Width": 105,
+                "Height": 155,
+                "Type": "ButtonWithIcon",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId6",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textAreaLightLabel",
+                "X": 38,
+                "Y": 5,
+                "Width": 28,
+                "Height": 16,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId7",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId11",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Name": "textAreaLightValue",
+                "X": 25,
+                "Y": 115,
+                "Width": 55,
+                "Height": 20,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "containerLight",
+            "X": 247,
+            "Y": 55,
+            "Width": 105,
+            "Height": 155,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Pressed": "main_screen\\bg_tab_page.png",
+                "Released": "main_screen\\bg_tab_page.png",
+                "Alpha": 255,
+                "IconPressed": "main_screen\\icon_lamp.png",
+                "IconReleased": "main_screen\\icon_lamp.png",
+                "IconX": 36,
+                "IconY": 61,
+                "IconHeight": 32,
+                "IconWidth": 32,
+                "Name": "buttonWithIconLamp",
+                "X": 0,
+                "Y": 0,
+                "Width": 105,
+                "Height": 155,
+                "Type": "ButtonWithIcon",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId8",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textAreaLampLabel",
+                "X": 38,
+                "Y": 5,
+                "Width": 28,
+                "Height": 16,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId9",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textAreaLampValue",
+                "X": 13,
+                "Y": 115,
+                "Width": 79,
+                "Height": 20,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "containerLamp",
+            "X": 364,
+            "Y": 55,
+            "Width": 105,
+            "Height": 155,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "main_screen\\msrtos_logo.png",
+            "Alpha": 255,
+            "Name": "image1",
+            "X": 203,
+            "Y": 15,
+            "Width": 74,
+            "Height": 13,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithIconLamp",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "LightControlScreen",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "MainScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "RelativeFilename": "main_screen\\background.png",
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "light_screen\\button_home.png",
+            "Released": "light_screen\\button_home.png",
+            "Alpha": 255,
+            "Name": "buttonHome",
+            "X": 24,
+            "Y": 24,
+            "Width": 24,
+            "Height": 24,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId12",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea",
+            "X": 195,
+            "Y": 58,
+            "Width": 80,
+            "Height": 23,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "light_screen\\icon_led_dark.png",
+            "Alpha": 255,
+            "Name": "imageLED1",
+            "X": 86,
+            "Y": 113,
+            "Width": 56,
+            "Height": 60,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "light_screen\\button_on.png",
+            "Released": "light_screen\\button_off.png",
+            "Alpha": 255,
+            "Name": "toggleButtonLED1",
+            "X": 73,
+            "Y": 189,
+            "Width": 82,
+            "Height": 22,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "light_screen\\icon_led_dark.png",
+            "Alpha": 255,
+            "Name": "imageLED2",
+            "X": 213,
+            "Y": 113,
+            "Width": 56,
+            "Height": 60,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "light_screen\\button_on.png",
+            "Released": "light_screen\\button_off.png",
+            "Alpha": 255,
+            "Name": "toggleButtonLED2",
+            "X": 200,
+            "Y": 189,
+            "Width": 82,
+            "Height": 22,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "light_screen\\icon_led_dark.png",
+            "Alpha": 255,
+            "Name": "imageLED3",
+            "X": 339,
+            "Y": 113,
+            "Width": 56,
+            "Height": 60,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "light_screen\\button_on.png",
+            "Released": "light_screen\\button_off.png",
+            "Alpha": 255,
+            "Name": "toggleButtonLED3",
+            "X": 326,
+            "Y": 189,
+            "Width": 82,
+            "Height": 22,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonHome",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "MainScreen",
+              "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButtonLED1",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ActionCustomTypeName": "Call LightControlScreen actionLedClicked",
+              "ParameterValue": "1",
+              "ActionComponent": "LightControlScreen",
+              "Type": "ActionCustom2"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButtonLED2",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ActionCustomTypeName": "Call LightControlScreen actionLedClicked",
+              "ParameterValue": "2",
+              "ActionComponent": "LightControlScreen",
+              "Type": "ActionCustom2"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButtonLED3",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ActionCustomTypeName": "Call LightControlScreen actionLedClicked",
+              "ParameterValue": "3",
+              "ActionComponent": "LightControlScreen",
+              "Type": "ActionCustom2"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "actionLedClicked",
+            "Description": "The LED button clicked",
+            "HasValue": true,
+            "ValueType": "uint32_t"
+          }
+        ],
+        "Name": "LightControlScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "TextEntries": [
+      {
+        "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId6",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": false
+      }
+    ],
+    "Name": "STM32F746G_DISCO",
+    "Resolution": {
+      "Width": 480,
+      "Height": 272
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "MainScreen",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "24": "LCD24bpp",
+      "16": "LCD16bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 480,
+        "Height": 272
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD16bpp": {
+        "Id": "LCD16bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../STM32F746G_DISCO.ioc --platform=m7",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../gcc/Makefile flash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape"
+  },
+  "Version": "4.13.0",
+  "CreatedBy": "4.13.0"
+}
