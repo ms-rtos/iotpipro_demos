@@ -45,8 +45,8 @@ int main (int argc, char **argv)
 
     ret = bind(sockfd_server, (struct sockaddr *)&sockaddr_server, sizeof(sockaddr_server));
     if (ret < 0) {
-        close(sockfd_server);
         ms_printf("Failed to bind port %d, errno = %d!\n", SERVER_LISTENING_PORT, errno);
+        close(sockfd_server);
         return  (-1);
     }
 
@@ -57,8 +57,8 @@ int main (int argc, char **argv)
     sockaddr_len = sizeof(struct sockaddr_in);
     sockfd_client = accept(sockfd_server, (struct sockaddr *)&sockaddr_client, &sockaddr_len);
     if (sockfd_client < 0) {
+        ms_printf("Failed to accept connection, errno = %d!\n", errno);
         close(sockfd_server);
-        ms_printf("Failed to accept connection, errno = %d\n", errno);
         return  (-1);
     }
 
@@ -70,8 +70,8 @@ int main (int argc, char **argv)
         len = read(sockfd_client, receive_buf, TEST_BUF_SIZE);
         if (len <= 0) {
             if ((errno != ETIMEDOUT) && (errno != EWOULDBLOCK)) {
+                ms_printf("Failed to read form TCP echo client, errno = %d\n", errno);
                  close(sockfd_client);
-                 ms_printf("Failed to read form TCP echo client, errno = %d\n", errno);
                  return  (-1);
             }
 

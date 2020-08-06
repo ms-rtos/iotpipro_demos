@@ -47,8 +47,8 @@ int main (int argc, char **argv)
 
     ret = bind(sockfd, (struct sockaddr *)&sockaddr_local, sizeof(sockaddr_local));
     if (ret < 0) {
-        close(sockfd);
         ms_printf("Failed to bind port %d, errno = %d!\n", SERVER_LISTENING_PORT, errno);
+        close(sockfd);
         return  (-1);
     }
 
@@ -58,11 +58,11 @@ int main (int argc, char **argv)
         ssize_t len;
 
         len = recvfrom(sockfd, receive_buf, TEST_BUF_SIZE,
-                            0, (struct sockaddr *)&sockaddr_remote, &sockaddr_len);
+                       0, (struct sockaddr *)&sockaddr_remote, &sockaddr_len);
         if (len <= 0) {
             if ((errno != ETIMEDOUT) && (errno != EWOULDBLOCK)) {
+                ms_printf("Failed to recvfrom UDP echo client, errno = %d!\n", errno);
                  close(sockfd);
-                 ms_printf("Failed to recvfrom UDP echo client, errno = %d!\n", errno);
                  return  (-1);
             }
 
@@ -70,7 +70,7 @@ int main (int argc, char **argv)
         }
 
         sendto(sockfd, receive_buf, len,
-              0, (struct sockaddr *)&sockaddr_remote, sizeof(sockaddr_remote));
+               0, (struct sockaddr *)&sockaddr_remote, sizeof(sockaddr_remote));
     }
 
     return  (0);

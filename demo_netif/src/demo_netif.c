@@ -50,7 +50,7 @@ int show_ip_addr(int sockfd)
     int ret;
     struct ifreq ifreq;
     struct sockaddr_in *psockaddrin;
-    char ipAddrString[sizeof("255.255.255.255")];
+    char ip[sizeof("255.255.255.255")];
 
     if (sockfd < 0) {
         return  (-1);
@@ -67,8 +67,8 @@ int show_ip_addr(int sockfd)
         return  (-1);
     }
 
-    inet_ntoa_r(psockaddrin->sin_addr, ipAddrString, sizeof(ipAddrString));
-    ms_printf("IP addr: %s\n", ipAddrString);
+    inet_ntoa_r(psockaddrin->sin_addr, ip, sizeof(ip));
+    ms_printf("IP addr: %s\n", ip);
 
     return  (0);
 }
@@ -80,21 +80,21 @@ int main (int argc, char **argv)
 
     sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (sockfd < 0) {
-        ms_printf("Failed to create socket fd. errno = %d\n", errno);
+        ms_printf("Failed to create socket, errno = %d!\n", errno);
         return  (-1);
     }
 
     ret = show_mac_addr(sockfd);
     if (ret < 0) {
+        ms_printf("Failed to show MAC address!\n");
         close(sockfd);
-        ms_printf("Failed to show MAC address.\n");
         return  (-1);
     }
 
     ret = show_ip_addr(sockfd);
     if (ret < 0) {
+        ms_printf("Failed to show IP address!\n");
         close(sockfd);
-        ms_printf("Failed to show IP address.\n");
         return  (-1);
     }
 

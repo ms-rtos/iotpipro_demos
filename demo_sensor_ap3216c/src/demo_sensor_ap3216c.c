@@ -28,7 +28,6 @@ int main (int argc, char **argv)
 
     fd = ms_io_open(SENSOR_AP3216C_DEV_NAME, O_RDWR, 0666);
     if (fd > 0) {
-
         while (--test_count) {
             memset(sensor_data, 0, sizeof(sensor_data));
 
@@ -43,14 +42,15 @@ int main (int argc, char **argv)
 
                 ms_printf("[data]: ir: 0x%08X, ps: 0x%08X, als: 0x%08X\n", ir_val, ps_val, als_val);
             } else {
-                ms_printf("Failed to read sensor data.\n");
+                ms_printf("Failed to read sensor data!\n");
                 break;
             }
         }
 
         ms_io_close(fd);
+
     } else {
-        ms_printf("Failed to open device file %s.\n", SENSOR_AP3216C_DEV_NAME);
+        ms_printf("Failed to open device %s!\n", SENSOR_AP3216C_DEV_NAME);
     }
 
     return  (0);

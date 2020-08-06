@@ -27,7 +27,6 @@ int main (int argc, char **argv)
 
     fd = ms_io_open(SENSOR_AHT20_DEV_NAME, O_RDWR, 0666);
     if (fd > 0) {
-
         while (--test_count) {
             memset(sensor_data, 0, sizeof(sensor_data));
 
@@ -38,16 +37,16 @@ int main (int argc, char **argv)
                 tem_rate = sensor_data[0].u.temp;
                 hum_rate = sensor_data[1].u.humi;
 
-                ms_printf("[data]: hum_rate: %f, tem_rate: %f\n\r", hum_rate, tem_rate);
+                ms_printf("[data]: hum_rate: %f, tem_rate: %f\n", hum_rate, tem_rate);
             } else {
-                ms_printf("Failed to read sensor data.\n");
+                ms_printf("Failed to read sensor data!\n");
                 break;
             }
         }
 
         ms_io_close(fd);
     } else {
-        ms_printf("Failed to open device file %s.\n", SENSOR_AHT20_DEV_NAME);
+        ms_printf("Failed to open device %s!\n", SENSOR_AHT20_DEV_NAME);
     }
 
     return  (0);

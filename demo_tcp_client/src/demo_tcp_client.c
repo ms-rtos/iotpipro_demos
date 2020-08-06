@@ -49,8 +49,8 @@ int main (int argc, char **argv)
 
     ret = bind(sockfd, (struct sockaddr *)&sockaddr_local, sizeof(sockaddr_local));
     if (ret < 0) {
-        close(sockfd);
         ms_printf("Failed to bind port %d, errno = %d!\n", LOCAL_BIND_PORT, errno);
+        close(sockfd);
         return  (-1);
     }
 
@@ -61,8 +61,8 @@ int main (int argc, char **argv)
     sockaddr.sin_port        = htons(REMOVE_SERVER_PORT);
 
     if (connect(sockfd, (struct sockaddr*)&sockaddr, sizeof(sockaddr)) == -1) {
+        ms_printf("Failed to connect TCP server, errno = %d!\n", errno);
         close(sockfd);
-        ms_printf("Failed to connect TCP server, errno = %d\n", errno);
         return  (-1);
     }
 
@@ -74,8 +74,8 @@ int main (int argc, char **argv)
         len = write(sockfd, "Hello, MS-RTOS!\n", sizeof("Hello, MS-RTOS!\n"));
         if (len <= 0) {
             if ((errno != ETIMEDOUT) && (errno != EWOULDBLOCK)) {
+                ms_printf("Failed to write to TCP server, errno = %d!\n", errno);
                 close(sockfd);
-                ms_printf("Failed to write to TCP server, errno = %d\n", errno);
                 return  (-1);
             }
 

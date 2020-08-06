@@ -60,7 +60,7 @@ int main (int argc, char **argv)
         return  (-1);
     }
 
-    ms_printf("uart parameters: baud=%d, data bits=%d, stop bits=%d\n", param.baud, param.data_bits, param.stop_bits);
+    ms_printf("uart parameters: baud=%d, data bits=%d, stop bits=%d.\n", param.baud, param.data_bits, param.stop_bits);
 
     /*
      * Start uart echo service.
