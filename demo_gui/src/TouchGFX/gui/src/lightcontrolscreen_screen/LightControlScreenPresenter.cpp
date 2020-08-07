@@ -32,7 +32,6 @@ void LightControlScreenPresenter::notifyKeysPressDown(int id)
     bool state;
 
     model->getLedState(id, state);
-    state = (state) ? 0 : 1;
 
     view.notifyLightViewChanged(id, state);
 }

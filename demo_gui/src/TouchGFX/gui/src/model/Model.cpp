@@ -65,7 +65,12 @@ void Model::tick()
             for (i = 0; i < keysNumber; i++) {
                 System::system_service_val_get(SYSTEM_SERVICE_TYPE_KEYBOARD, i, &state);
                 if (currentKeysState[i] == 1 && state == 0) {
-                    modelListener->notifyKeysPressDown((i + 1));
+                    bool state;
+                    int index = i + 1;
+
+                    getLedState(index, state);
+                    setLedState(index, !state);
+                    modelListener->notifyKeysPressDown(index);
                 }
                 currentKeysState[i] = state;
             }

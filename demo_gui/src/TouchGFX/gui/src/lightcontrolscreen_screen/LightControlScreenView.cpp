@@ -64,7 +64,10 @@ void LightControlScreenView::actionLedClicked(uint32_t value)
         return;
     }
 
-    state = button->getState();
+    presenter->lightStateGet(button_id, state);
+    state = !state;
+
+    button->forceState(state);
     if (state) {
         image->setBitmap(touchgfx::Bitmap(BITMAP_ICON_LED_LIGHT_ID));
     } else {
@@ -105,8 +108,6 @@ void LightControlScreenView::notifyLightViewChanged(int id, bool state)
     } else {
         image->setBitmap(touchgfx::Bitmap(BITMAP_ICON_LED_DARK_ID));
     }
-
-    presenter->lightButtonClicked(button_id, state);
 
     button->invalidate();
     image->invalidate();
