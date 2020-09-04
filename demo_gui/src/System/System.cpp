@@ -19,6 +19,8 @@
 #include "ms_u8g2_porting.h"
 #include "cJSON.h"
 
+#include "gui/model/Model.hpp"
+
 using namespace touchgfx_msrtos;
 
 /**
@@ -58,6 +60,8 @@ int System::tem_rate;
 int System::hum_rate;
 int System::light_ir, System::light_als, System::light_ps;
 
+Model* System::data_model;
+
 /**
  * @brief SDDC service functions.
  */
@@ -72,7 +76,7 @@ static char *iot_pi_report_data_create(void);
 static char *iot_pi_invite_data_create(void);
 static void iot_pi_led_state_report(sddc_t *sddc, const uint8_t *uid);
 
-void System::system_service_init(void)
+void System::system_service_init(Model *model)
 {
     int i;
     ms_uint8_t led_val;
@@ -84,6 +88,8 @@ void System::system_service_init(void)
     if (++ref_count != 1) {
         return;
     }
+
+    data_model = model;
 
     /*
      * System service initialization
@@ -409,28 +415,31 @@ void System::system_sddc_notify(SystemNotifyType t, uint32_t channel, uint32_t s
     cJSON *root;
     char *str;
     char name[32];
+    uint32_t index;
 
     root = cJSON_CreateObject();
 
+    index = channel + 1;
+	
     switch (t) {
     case SYSTEM_NOTIFY_TYPE_TEMPERATURE:
-        snprintf(name, 32, "temperature-%ld", channel);
+        snprintf(name, 32, "temperature-%ld", index);
         cJSON_AddNumberToObject(root, name, state);
         break;
     case SYSTEM_NOTIFY_TYPE_HUMIDITY:
-        snprintf(name, 32, "humidity-%ld", channel);
+        snprintf(name, 32, "humidity-%ld", index);
         cJSON_AddNumberToObject(root, name, state);
         break;
     case SYSTEM_NOTIFY_TYPE_LIGHT:
-        snprintf(name, 32, "light-%ld", channel);
+        snprintf(name, 32, "light-%ld", index);
         cJSON_AddNumberToObject(root, name, state);
         break;
     case SYSTEM_NOTIFY_TYPE_LED:
-        snprintf(name, 32, "led-%ld", channel);
+        snprintf(name, 32, "led%ld", index);
         cJSON_AddBoolToObject(root, name, (ms_bool_t)state);
         break;
     case SYSTEM_NOTIFY_TYPE_KEYBOARD:
-        snprintf(name, 32, "keyboard-%ld", channel);
+        snprintf(name, 32, "keyboard-%ld", index);
         cJSON_AddBoolToObject(root, name, (ms_bool_t)state);
         break;
     default:
@@ -465,9 +474,11 @@ static ms_bool_t iot_pi_on_message(sddc_t *sddc, const uint8_t *uid, const char 
         if (cJSON_IsTrue(led)) {
             ms_uint8_t on = 1;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 0, on);
+            System::data_model->ledStateChanged(0, on);
         } else {
             ms_uint8_t off = 0;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 0, off);
+            System::data_model->ledStateChanged(0, off);
         }
     }
 
@@ -476,9 +487,11 @@ static ms_bool_t iot_pi_on_message(sddc_t *sddc, const uint8_t *uid, const char 
         if (cJSON_IsTrue(led)) {
             ms_uint8_t on = 1;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 1, on);
+            System::data_model->ledStateChanged(1, on);
         } else {
             ms_uint8_t off = 0;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 1, off);
+            System::data_model->ledStateChanged(1, off);
         }
     }
 
@@ -487,9 +500,11 @@ static ms_bool_t iot_pi_on_message(sddc_t *sddc, const uint8_t *uid, const char 
         if (cJSON_IsTrue(led)) {
             ms_uint8_t on = 1;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 2, on);
+            System::data_model->ledStateChanged(2, on);
         } else {
             ms_uint8_t off = 0;
             System::system_service_val_set(SYSTEM_SERVICE_TYPE_LED, 2, off);
+            System::data_model->ledStateChanged(2, off);
         }
     }
 
@@ -580,7 +595,7 @@ static ms_bool_t iot_pi_on_invite(sddc_t *sddc, const uint8_t *uid, const char *
      */
 
     char *str = cJSON_Print(root);
-    ms_printf("iot_pi_sddc_on_update: %s\n", str);
+    ms_printf("===> iot_pi_on_invite: %s\n", str);
     cJSON_free(str);
 
     cJSON_Delete(root);

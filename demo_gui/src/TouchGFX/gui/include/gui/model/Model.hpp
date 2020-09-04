@@ -39,6 +39,9 @@ public:
     // Function that allow your Presenter to get the number of KEY.
     int getKeysNumber() const { return keysNumber; }
 
+public:
+    void ledStateChanged(uint32_t channel, uint32_t state);
+
 protected:
     ModelListener* modelListener;
 
