@@ -19,6 +19,8 @@
 #define SYSTEM_BOARD_LED_NUM    (3)
 #define SYSTEM_BOARD_KEY_NUM    (3)
 
+class Model;
+
 namespace touchgfx_msrtos
 {
 /**
@@ -59,8 +61,10 @@ typedef enum
 class System
 {
 public:
-    static void system_service_init(void);
+    static void system_service_init(Model *model);
     static void system_service_deinit(void);
+
+    static Model *data_model;
 
     /**
      * @fn void System::system_service_channel_query();

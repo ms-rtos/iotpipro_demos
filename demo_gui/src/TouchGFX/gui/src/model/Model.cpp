@@ -5,7 +5,7 @@ using namespace touchgfx_msrtos;
 
 Model::Model() : modelListener(0)
 {
-    System::system_service_init();
+    System::system_service_init(this);
 
     currentTemperature = 0;
     currentHumidity = 0;
@@ -46,7 +46,6 @@ void Model::tick()
         if (temp != currentTemperature) {
             currentTemperature = temp;
             modelListener->notifyTemperatureChanged(currentTemperature);
-            System::system_sddc_notify(SYSTEM_NOTIFY_TYPE_TEMPERATURE, 0, currentTemperature);
         }
 
         if (humi != currentHumidity) {
@@ -76,6 +75,11 @@ void Model::tick()
             }
         }
     }
+}
+
+void Model::ledStateChanged(uint32_t channel, uint32_t state)
+{
+    modelListener->notifyKeysPressDown(channel + 1);
 }
 
 void Model::setLedState(uint16_t index, bool state)
