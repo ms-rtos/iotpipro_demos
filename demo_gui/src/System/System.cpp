@@ -138,7 +138,7 @@ void System::system_service_init(Model *model)
      * SDDC service initialization
      */
 #ifdef SDDC_CFG_NET_IMPL
-    ms_net_impl_set(SDDC_CFG_NET_IMPL);
+    ms_net_set_impl(SDDC_CFG_NET_IMPL);
 #endif
     sddc = sddc_create(SDDC_CFG_PORT);
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);

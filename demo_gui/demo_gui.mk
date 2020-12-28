@@ -125,13 +125,26 @@ LOCAL_CXXFLAGS :=
 #*********************************************************************************************************
 # Depend library (eg. LOCAL_DEPEND_LIB := -la LOCAL_DEPEND_LIB_PATH := -L"Your library search path")
 #*********************************************************************************************************
-LOCAL_DEPEND_LIB      := -ltouchgfx -ltouchgfx_port -lsddc -lcjson -lu8g2 
+LOCAL_DEPEND_LIB      := -lsddc -lcjson -lu8g2 
 LOCAL_DEPEND_LIB_PATH := \
--L"$(MSRTOS_BASE_PATH)/st_touchgfx/src/ST/touchgfx/lib/core/cortex_m4f/gcc" \
--L"$(MSRTOS_BASE_PATH)/st_touchgfx/$(OUTDIR)" \
 -L"$(MSRTOS_BASE_PATH)/sddc/$(OUTDIR)" \
 -L"$(MSRTOS_BASE_PATH)/cJSON/$(OUTDIR)" \
 -L"$(MSRTOS_BASE_PATH)/u8g2/$(OUTDIR)" 
+
+ifeq ($(FLOAT_ABI), softfp)
+LOCAL_DEPEND_LIB      += -ltouchgfx
+else 
+LOCAL_DEPEND_LIB      += -ltouchgfx-float-abi-hard
+endif
+
+ifeq ($(CPU_TYPE), cortex-m4)
+LOCAL_DEPEND_LIB_PATH += -L"$(MSRTOS_BASE_PATH)/st_touchgfx/src/ST/touchgfx/lib/core/cortex_m4f/gcc"
+else 
+LOCAL_DEPEND_LIB_PATH += -L"$(MSRTOS_BASE_PATH)/st_touchgfx/src/ST/touchgfx/lib/core/cortex_m7/gcc"
+endif
+
+LOCAL_DEPEND_LIB      += -ltouchgfx_port
+LOCAL_DEPEND_LIB_PATH += -L"$(MSRTOS_BASE_PATH)/st_touchgfx/$(OUTDIR)"
 
 #*********************************************************************************************************
 # C++ config
