@@ -152,7 +152,7 @@ void System::system_service_init(Model *model)
                      2048U,
                      4U,
                      70U,
-                     MS_THREAD_OPT_USER | MS_THREAD_OPT_REENT_EN,
+                     MS_THREAD_OPT_USER | MS_THREAD_OPT_REENT_EN | MS_THREAD_OPT_FPU_EN,
                      &thread_service_tid);
 
     /*
@@ -164,7 +164,7 @@ void System::system_service_init(Model *model)
                      2048U,
                      30U,
                      70U,
-                     MS_THREAD_OPT_USER | MS_THREAD_OPT_REENT_EN,
+                     MS_THREAD_OPT_USER | MS_THREAD_OPT_REENT_EN | MS_THREAD_OPT_FPU_EN,
                      &thread_sddc_tid);
 }
 
