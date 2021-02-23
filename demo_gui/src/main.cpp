@@ -6,7 +6,7 @@
  *
  * File: main.c TouchGFX application main.
  *
- * Author: Jiao.jinxing <jiaojixing@acoinfo.com>
+ * Author: Jiao.jinxing <jiaojinxing@acoinfo.com>
  *
  */
 

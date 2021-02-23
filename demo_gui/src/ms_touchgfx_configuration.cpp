@@ -6,7 +6,7 @@
  *
  * File: ms_touchgfx_configuration.cpp TouchGFX configuration.
  *
- * Author: Jiao.jinxing <jiaojixing@acoinfo.com>
+ * Author: Jiao.jinxing <jiaojinxing@acoinfo.com>
  *
  */
 
@@ -29,11 +29,13 @@ extern "C" void touchgfx_taskEntry();
 
 using namespace touchgfx;
 
-static TouchGFXHAL *ms_tgfx_hal;
+static TouchGFXHAL    *ms_tgfx_hal;
 
-int ms_tgfx_fb_fd;
+int                    ms_tgfx_fb_fd;
 ms_fb_var_screeninfo_t ms_tgfx_fb_var_info;
 ms_fb_fix_screeninfo_t ms_tgfx_fb_fix_info;
+ms_bool_t              ms_tgfx_using_dma2d     = MS_FALSE;
+ms_bool_t              ms_tgfx_using_double_fb = MS_FALSE;
 
 void touchgfx_init()
 {
@@ -65,9 +67,14 @@ void touchgfx_init()
         display = new LCD32bpp();
     }
 
+    if (ms_tgfx_fb_fix_info.capability & MS_FB_CAP_DOUBLE_FB) {
+        ms_tgfx_using_double_fb = MS_TRUE;
+    }
+
     if ((ms_tgfx_fb_fix_info.capability & MS_FB_BLIT_OP_COPY) ||
         (ms_tgfx_fb_fix_info.capability & MS_FB_BLIT_OP_FILL)) {
-        dma = new NoDMA();
+        ms_tgfx_using_dma2d = MS_TRUE;
+        dma = new MsDMA();
     } else {
         dma = new NoDMA();
     }
@@ -104,7 +111,7 @@ extern "C" uint32_t CRC_Lock(void)
     return (uint32_t)CRC_Lock;
 }
 
-extern "C" _PTR memcpy(_PTR dest, const _PTR src, size_t len)
+extern "C" void *memcpy(void *dest, const void *src, size_t len)
 {
     ms_arch_memcpy(dest, src, len);
     return dest;
